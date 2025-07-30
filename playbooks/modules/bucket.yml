@@ -1,0 +1,37 @@
+---
+- name: Bucket Operations
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    endpoint: "https://10.225.108.217:4443"
+    username: "root"
+    password: "Password123!"
+
+  tasks:
+    - name: create a bucket
+      dellemc.objectscale.bucket:
+        endpoint: "{{ endpoint }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        name: "luis_bucket"
+        namespace: "ns1"
+        state: "present"
+    
+    - name: get a bucket
+      dellemc.objectscale.bucket:
+        endpoint: "{{ endpoint }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        name: "luis_bucket"
+        namespace: "ns1"
+        state: "present"
+
+    - name: delete bucket
+      dellemc.objectscale.bucket:
+        endpoint: "{{ endpoint }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        name: "luis_bucket"
+        namespace: "ns1"
+        state: "absent"
