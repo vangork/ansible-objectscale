@@ -7,6 +7,8 @@
     endpoint: "https://10.225.108.217:4443"
     username: "root"
     password: "Password123!"
+    name: "luis_bucket"
+    namespace: "ns1"
 
   tasks:
     - name: create a bucket
@@ -14,8 +16,8 @@
         endpoint: "{{ endpoint }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        name: "luis_bucket"
-        namespace: "ns1"
+        name: "{{ name }}"
+        namespace: "{{ namespace }}"
         state: "present"
     
     - name: get a bucket
@@ -23,8 +25,18 @@
         endpoint: "{{ endpoint }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        name: "luis_bucket"
-        namespace: "ns1"
+        name: "{{ name }}"
+        namespace: "{{ namespace }}"
+        state: "present"
+    
+    - name: update a bucket
+      dellemc.objectscale.bucket:
+        endpoint: "{{ endpoint }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        name: "{{ name }}"
+        namespace: "{{ namespace }}"
+        owner: "object_admin1"
         state: "present"
 
     - name: delete bucket
@@ -32,6 +44,6 @@
         endpoint: "{{ endpoint }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        name: "luis_bucket"
-        namespace: "ns1"
+        name: "{{ name }}"
+        namespace: "{{ namespace }}"
         state: "absent"

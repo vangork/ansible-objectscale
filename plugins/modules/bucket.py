@@ -148,7 +148,7 @@ def run_module():
     if owner is not None and owner != bucket.owner:
         try:
             bucket.owner = owner
-            result['bucket_details'] = json.loads(str(client.update_bucket(name, namespace)))
+            result['bucket_details'] = json.loads(str(client.update_bucket(bucket)))
             result['changed'] = True
             module.exit_json(**result)
         except Exception as e:
