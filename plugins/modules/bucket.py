@@ -74,8 +74,7 @@ message:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.dellemc.objectscale.plugins.module_utils.objectscale_client \
-    import import_client
+from ansible_collections.dellemc.objectscale.plugins.module_utils.objectscale_client import import_client
 import json
 
 def run_module():
