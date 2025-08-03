@@ -74,7 +74,8 @@ message:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import objectscale_client
+from ansible_collections.dellemc.objectscale.plugins.module_utils.objectscale_client \
+    import import_client
 import json
 
 def run_module():
@@ -98,6 +99,8 @@ def run_module():
         argument_spec=module_args,
         supports_check_mode=False,
     )
+
+    objectscale_client = import_client(module.tmpdir)
 
     state = module.params['state']
     endpoint = module.params['endpoint']
